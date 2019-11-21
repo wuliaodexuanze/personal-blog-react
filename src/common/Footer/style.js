@@ -1,6 +1,14 @@
+/*
+ * @Description: 描述
+ * @Author: jayafs
+ * @Email: 1169655050@qq.com
+ * @Date: 2019-11-21 19:48:42
+ * @LastEditors: jayafs
+ * @LastEditTime: 2019-11-21 22:47:26
+ */
 import styled from 'styled-components';
 
-export const FooterWrapper = styled.div`
+export const FooterWrapper = styled.footer`
   clear: both;
 	margin-top: 20px;
 	padding: 20px 10px;

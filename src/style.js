@@ -36,7 +36,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1em;
     line-height: 1.5em;
     color: #666;
-    overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
       "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
       sans-serif;
@@ -77,10 +76,11 @@ const GlobalStyle = createGlobalStyle`
     content: "";
   }
   .clearfix:after {
-  clear: both;
+    clear: both;
   }
   #root {
     padding: 0;
+    overflow-x: hidden;
   }
   .wrap {
     padding-right: 15px;
