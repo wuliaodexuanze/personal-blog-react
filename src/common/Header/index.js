@@ -2,6 +2,7 @@ import React from 'react';
 import Nav from '../../containers/Nav';
 import Config from '../../config';
 import FontA from 'react-fontawesome';
+import 'animate.css';
 import {
   HeaderWrapper
 } from './style';
@@ -9,11 +10,12 @@ import logoPic from '../../statics/logo.png';
 
 function Header() {
   return(
-    <HeaderWrapper>
+    <HeaderWrapper className="animated fadeInDown">
       <div className="wrap top clearfix">
         <h1 className="logo">
-          <a href="/" title="首页">
+          <a href="/" className="clearfix" title="logo">
             <img src={logoPic} alt="logo" />
+            <h1 className="page-title">手里有糖</h1>
           </a>
         </h1>
         <p className="title">我的网站，可以后台设置此处文字！</p>

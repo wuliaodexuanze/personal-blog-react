@@ -8,36 +8,34 @@
  */
 import styled from 'styled-components';
 
-export const MainWrapper = styled.div `
-  padding-top: 20px;
-  
-  .mb20 {
-    margin-bottom: 20px;
-  }
-  
-  .main-left {
+export const MainRightWrapper = styled.div `
+  @keyframes turnZ{
+    0%{transform:rotateZ(0deg);}
+    100%{transform:rotateZ(360deg);}
 
-    @media (min-width: 768px) {
-      float: left;
-      width: 66.6666667%;
-    }
-
-    .list-box {
-      padding-top: 20px;
-    }
   }
 
   .main-right {
-    display: none;
+    display: block;
 
     @media (min-width: 768px) {
-      display: block;
-      float: left;
+      float: right;
       width: 33.33333333%;
     }
 
+    .right-box {
+      display: none;
+
+      @media (min-width: 768px) {
+        display: block;
+      }
+    }
+
     .main {
-      padding-left: 20px;
+      
+      @media (min-width: 768px) {
+        padding-left: 20px;
+      }
     }
 
     .author {
@@ -46,6 +44,7 @@ export const MainWrapper = styled.div `
       overflow: hidden;
       background-color: #fff;
       border: 1px solid #ececec;
+      cursor: pointer;
 
       img {
         float: left;
@@ -56,6 +55,13 @@ export const MainWrapper = styled.div `
         height: 100px;
         border: 3px solid #fff;
         box-shadow: 1px 1px 7px #777;
+
+        &:hover {
+          animation-name: turnZ;
+          animation-duration: 2s;
+          animation-iteration-count: 1;
+          animation-delay: .3s;
+        }
       }
     }
     .intag {

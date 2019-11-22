@@ -14,6 +14,7 @@ import {
 import listPic from '../../statics/picture/1-1f5301s915s8.gif';
 
 function ListItem () {
+
   return (
     <ListItemWrapper>
       <h2 className="title">
@@ -25,8 +26,13 @@ function ListItem () {
       </h2>
       <div className="clearfix">
         <div className="viewimg">
-          <a href="/" title="" target="ablank" className="ipic">
+          <a
+          href="/"
+          title=""
+          target="ablank"
+          className="ipic">
             <img src={listPic} alt="略缩图" className="thumbnail" />
+            <span className="shine">&nbsp;</span>
           </a>
         </div>
         <div className="preview">

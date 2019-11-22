@@ -10,8 +10,15 @@ export const HeaderWrapper = styled.header`
     width: 330px;
 
     img {
+      float: left;
       margin-top: 10px;
       width: 80px;
+    }
+
+    .page-title {
+      line-height: 100px;
+      font-size: 1.5em;
+      text-indent: .5em;
     }
   }
   .title {

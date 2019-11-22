@@ -10,30 +10,25 @@ import React, { Fragment } from 'react';
 import {
   HashRouter,
   Route,
-  Switch,
-  Redirect
+  Switch
 } from 'react-router-dom';
 import Header from './common/Header';
-import Main from './common/Main';
 import Footer from './common/Footer';
+import Home from './views/home';
+import About from './views/about';
 
 function App() {
   return (
-    <HashRouter>
-      <Switch>
-        <Fragment>
-          <Header />
-          <Route exact path="/" component={() => (
-            <Redirect to="/home/index" from="/home" exact />
-          )} />
-          <Route path="/home" component={Main}/>
-          <Route path="/liuyan" render={() => (
-            <div>liuyan</div>
-          )}/>
-          <Footer />
-        </Fragment>
-      </Switch>
-  </HashRouter>
+    <Fragment>
+      <Header />
+      <HashRouter>
+        <Switch>
+          <Route exact path="/about" component={ About } />
+          <Route path="/" component={ Home }/>
+        </Switch>
+      </HashRouter>
+      <Footer />
+    </Fragment>
   );
 }
 

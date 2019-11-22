@@ -7,6 +7,7 @@
  * @LastEditTime: 2019-11-21 22:24:49
  */
 import styled from 'styled-components';
+import shinePic from '../../statics/imgs/shine_brands.png';
 
 export const ListItemWrapper = styled.section`
   overflow: hidden;
@@ -53,6 +54,29 @@ export const ListItemWrapper = styled.section`
       padding: 3px;
       border: 1px solid #e5e5e5;
     }
+
+    .ipic {
+      position: relative;
+      display: block;
+
+      &:hover {
+        .shine {
+          background-position: 160px center;
+          transition: all .5s ease-in-out;
+        }
+      }
+    }
+  }
+
+  .shine {
+    z-index: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 160px;
+    height: 120px;
+    background: url(${shinePic}) no-repeat -160px 0;
+    margin: 4px
   }
 
   .preview {
