@@ -9,6 +9,9 @@
 import React from 'react';
 import FontA from 'react-fontawesome';
 import {
+  Link
+} from 'react-router-dom';
+import {
   ListItemWrapper
 } from './style';
 import listPic from '../../statics/picture/1-1f5301s915s8.gif';
@@ -19,21 +22,21 @@ function ListItem () {
     <ListItemWrapper>
       <h2 className="title">
         <span className="category">
-          <a href="/" rel="category tag">随心笔记</a>
+          <Link to="/web" rel="category tag">前端</Link>
           <FontA name="caret-right" />
         </span>
-        <a className="text" href="/" target="ablank">如果没有略缩图，就不会显示前面的图片！</a>
+        <Link className="text" to="/article/1" target="ablank">如果没有略缩图，就不会显示前面的图片！</Link>
       </h2>
       <div className="clearfix">
         <div className="viewimg">
-          <a
-          href="/"
+          <Link
+          to="/article/1"
           title=""
           target="ablank"
           className="ipic">
             <img src={listPic} alt="略缩图" className="thumbnail" />
             <span className="shine">&nbsp;</span>
-          </a>
+          </Link>
         </div>
         <div className="preview">
           如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就……
@@ -44,12 +47,12 @@ function ListItem () {
           </span>
           <span>
             <FontA name="comment-o" />
-            <a href="/" className="ds-thread-count">暂无评论</a>
+            <Link to="/article/1" className="ds-thread-count">暂无评论</Link>
           </span>
           <span>
             <FontA name="eye" />143
           </span>
-          <a className="more" href="/" title="阅读详情">阅读详情</a>
+          <Link className="more" to="/article/1" title="阅读详情">阅读详情</Link>
         </div>
       </div>
     </ListItemWrapper>

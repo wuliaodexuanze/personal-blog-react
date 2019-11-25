@@ -18,7 +18,7 @@ function Header() {
             <h1 className="page-title">手里有糖</h1>
           </a>
         </h1>
-        <p className="title">我的网站，可以后台设置此处文字！</p>
+        <p className="title"></p>
         <div className="contact">
           <li>
             <a

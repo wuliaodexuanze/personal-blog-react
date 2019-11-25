@@ -1,11 +1,32 @@
 import React from 'react';
+import marked from 'marked';
+import hljs from 'highlight.js';
 import Crumbs from '../../components/Crumbs';
 import FontA from 'react-fontawesome';
 import {
-  TextWrapper
+  TextWrapper,
+  MarkDownWrapper
 } from './style';
+import '../../statics/css/github.min.css';
+
+marked.setOptions({
+  renderer: new marked.Renderer(),
+  gfm: true,
+  tables: true,
+  breaks: true,
+  pedantic: false,
+  sanitize: true,
+  smartLists: true,
+  smartypants: false,
+  xhtml: true,
+  highlight: function (code) {
+    return hljs.highlightAuto(code).value;
+  },
+});
 
 function Text() {
+  const text = '# 标题1\n ## 标题2\n ``` html\n<!doctype html>\n<html>\n\t<div>xxxx</div>\n</html>\n```\n``` javascript\nfunction text() {\n\t # 注释代码\n\tconsole.log("测试数据");console.log("测试数据");console.log("测试数据");\n}\n```\n > **注意：**\n我是注释数据\n\n ![](https://pic3.zhimg.com/80/v2-12c64677f0120a7f487579679aecb4f6_hd.jpg)';
+
   const crumbsData = [
     {
       name: '主页',
@@ -41,9 +62,12 @@ function Text() {
             </div>
           </div>
         </div>
-        <p className="content">
-    如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！
-        </p>
+        <MarkDownWrapper
+        className="markdown-body"
+        dangerouslySetInnerHTML={{
+          __html: marked(text)
+        }}>
+        </MarkDownWrapper>
         <div className="postcopyright">
           <strong>版权保护: </strong>
           转载请保留链接:&nbsp;

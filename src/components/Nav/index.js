@@ -19,6 +19,12 @@ function Nav(props) {
     handleCollapseNavClick
   } = props;
 
+  window.onhashchange = () => {
+    if (showCollapseNav) {
+      handleCollapseNavClick();
+    }
+  }
+
   return (
     <NavWrapper>
       <div className="wrap nav">
@@ -70,16 +76,16 @@ function Nav(props) {
             <HashRouter>
               <ul>
                 <li className="menu-item current_page_item">
-                  <Link to="/">首页</Link>
+                  <Link to="/" replace>首页</Link>
                 </li>
                 <li className="menu-item">
-                  <Link to="/front">前端</Link>
+                  <Link to="/web" replace>前端</Link>
                 </li>
                 <li className="menu-item">
-                  <Link to="/front">后端</Link>
+                  <Link to="/server" replace>后端</Link>
                 </li>
                 <li className="menu-item">
-                  <Link to="/about">关于博主</Link>
+                  <Link to="/about" replace>关于博主</Link>
                 </li>
               </ul>
             </HashRouter>

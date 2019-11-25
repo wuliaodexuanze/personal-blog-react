@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import store from './store'
 // import * as serviceWorker from './serviceWorker';
 import 'font-awesome/css/font-awesome.min.css';
+import 'default-passive-events';
 
 ReactDOM.render(
     <Fragment>

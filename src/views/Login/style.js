@@ -13,7 +13,7 @@ export const LoginWrapper = styled.div`
   .form {
     position: relative;
     z-index: 1;
-    background: #FFFFFF;
+    background: #fff;
     padding: 20px;
     margin: 0 auto;
     text-align: center;
@@ -40,11 +40,11 @@ export const LoginWrapper = styled.div`
       font-family: "Roboto", sans-serif;
       text-transform: uppercase;
       outline: 0;
-      background: #4CAF50;
+      background: #0090ce;
       width: 100%;
       border: 0;
       padding: 15px;
-      color: #FFFFFF;
+      color: #fff;
       font-size: 14px;
       transition: all 0.3 ease;
       cursor: pointer;

@@ -20,8 +20,9 @@ function Home() {
       <div className="main-left animated fadeInLeft">
         <HashRouter>
           <Switch>
-            <Route path="/front" component={ ContentList } />
-            <Route path="/text" component={ Text } />
+            <Route path="/web" component={ ContentList } />
+            <Route path="/server" component={ ContentList } />
+            <Route path="/article/:id" component={ Text } />
             <Route path="/" exact component={MainLeft} />
             <Route path="*" component={ NotFound } />
           </Switch>

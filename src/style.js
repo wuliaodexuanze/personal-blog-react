@@ -58,15 +58,6 @@ const GlobalStyle = createGlobalStyle`
     color: #00a4dc;
     text-decoration: none;
   }
-  code {
-    padding: 2px 4px;
-    font-size: 90%;
-    color: #c7254e;
-    background-color: #f9f2f4;
-    border-radius: 4px;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-  }
   .clearfix {
     zoom: 1;
   }
