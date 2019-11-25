@@ -7,6 +7,7 @@ import {
 import MainLeft from '../../common/MainLeft';
 import MainRight from '../../common/MainRight';
 import ContentList from '../../common/ContentList';
+import Text from '../../common/Text';
 import NotFound from '../notFound';
 import {
   HomeWrapper
@@ -19,7 +20,8 @@ function Home() {
       <div className="main-left animated fadeInLeft">
         <HashRouter>
           <Switch>
-            <Route path="/web" component={ ContentList } />
+            <Route path="/front" component={ ContentList } />
+            <Route path="/text" component={ Text } />
             <Route path="/" exact component={MainLeft} />
             <Route path="*" component={ NotFound } />
           </Switch>

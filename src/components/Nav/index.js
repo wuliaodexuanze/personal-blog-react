@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  HashRouter,
+  Link
+} from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import SliderNav from '../../plugins/sliderNav';
 import FontA from 'react-fontawesome';
@@ -63,26 +67,22 @@ function Nav(props) {
           timeout={200}
           effect='ease-out'>
           <div ref={ref} className="navbar-collapse">
-            <ul>
-              <li className="menu-item current_page_item">
-                <a href="/">首页</a>
-              </li>
-              <li className="menu-item">
-                <a href="/">HTML技巧</a>
-              </li>
-              <li className="menu-item">
-                <a href="/">Cms文章</a>
-              </li>
-              <li className="menu-item">
-                <a href="/">随心笔记</a>
-              </li>
-              <li className="menu-item">
-                <a href="/">给我留言</a>
-              </li>
-              <li className="menu-item">
-                <a href="/">关于博主</a>
-              </li>
-            </ul>
+            <HashRouter>
+              <ul>
+                <li className="menu-item current_page_item">
+                  <Link to="/">首页</Link>
+                </li>
+                <li className="menu-item">
+                  <Link to="/front">前端</Link>
+                </li>
+                <li className="menu-item">
+                  <Link to="/front">后端</Link>
+                </li>
+                <li className="menu-item">
+                  <Link to="/about">关于博主</Link>
+                </li>
+              </ul>
+            </HashRouter>
           </div>
         </SliderNav>
       </div>

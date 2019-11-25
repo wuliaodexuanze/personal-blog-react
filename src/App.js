@@ -14,6 +14,8 @@ import {
 } from 'react-router-dom';
 import Header from './common/Header';
 import Footer from './common/Footer';
+import Login from './containers/Login';
+import Register from './containers/Register';
 import Home from './views/home';
 import About from './views/about';
 
@@ -24,6 +26,8 @@ function App() {
       <HashRouter>
         <Switch>
           <Route exact path="/about" component={ About } />
+          <Route exact path="/login" component={ Login } />
+          <Route exact path="/register" component={ Register } />
           <Route path="/" component={ Home }/>
         </Switch>
       </HashRouter>

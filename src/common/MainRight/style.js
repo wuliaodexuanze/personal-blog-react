@@ -64,6 +64,39 @@ export const MainRightWrapper = styled.div `
         }
       }
     }
+
+    .no-login {
+      margin-bottom: 20px;
+      padding: 20px 10px;
+      overflow: hidden;
+      background-color: #fff;
+      border: 1px solid #ececec;
+      text-align: center;
+      .btn {
+        border: 1px solid transparent;
+        padding: .375rem .85rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #f8f8f8;
+        cursor: pointer;
+      }
+
+      .login-btn {
+        margin-right: 10px;
+        background: #09f;
+        &:hover {
+          background: #0090ce;
+        }
+      }
+
+      .register-btn {
+        background: #0090ce;
+        &:hover {
+          background: #0b7cad;
+        }
+      }
+    }
+
     .intag {
       padding: 5px 10px;
       background: #0090ce;

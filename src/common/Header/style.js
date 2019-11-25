@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const HeaderWrapper = styled.header`
+  position: relative;
   background: #fff;
+  z-index: 99;
   .top {
     height: 100px;
   }
