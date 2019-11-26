@@ -1,6 +1,6 @@
 import React from 'react';
-import Crumbs from '../../components/Crumbs';
-import ListItem from '../../components/ListItem';
+import Crumbs from '../Crumbs';
+import ListItem from '../ListItem';
 import Paging from '../../components/Paging';
 import {
   ContentListWrapper

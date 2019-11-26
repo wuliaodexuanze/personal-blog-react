@@ -1,2 +1,0 @@
-export const SEARCH_TOGGLE = 'nav/SEARCH_TOGGLE';
-export const COLLAPSE_TOGGLE = 'nav/COLLAPSE_TOGGLE';

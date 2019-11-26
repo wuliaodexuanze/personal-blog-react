@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -96,6 +96,17 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const MainWrapper = styled.div`
+  padding-top: 20px;
+  .main-left {
+    @media (min-width: 768px) {
+      float: left;
+      width: 66.6666667%;
+    }
+  }
+`;
+
 export {
-  GlobalStyle
+  GlobalStyle,
+  MainWrapper
 };

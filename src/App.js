@@ -6,33 +6,36 @@
  * @LastEditors: jayafs
  * @LastEditTime: 2019-11-21 23:40:53
  */
-import React, { Fragment } from 'react';
+import React from 'react';
 import {
   HashRouter,
   Route,
   Switch
 } from 'react-router-dom';
-import Header from './common/Header';
-import Footer from './common/Footer';
-import Login from './containers/Login';
-import Register from './containers/Register';
+import { MainWrapper } from './style'
+import Side from './common/Side';
+import ContentList from './common/ContentList';
 import Home from './views/home';
-import About from './views/about';
+import Article from './views/article';
+import NotFound from './views/notFound';
+
 
 function App() {
   return (
-    <Fragment>
-      <Header />
-      <HashRouter>
-        <Switch>
-          <Route exact path="/about" component={ About } />
-          <Route exact path="/login" component={ Login } />
-          <Route exact path="/register" component={ Register } />
-          <Route path="/" component={ Home }/>
-        </Switch>
-      </HashRouter>
-      <Footer />
-    </Fragment>
+    <MainWrapper className="wrap">
+      <Side />
+      <div className="main-left animated fadeInLeft">
+        <HashRouter>
+          <Switch>
+            <Route path="/web" component={ ContentList } />
+            <Route path="/server" component={ ContentList } />
+            <Route path="/article/:id" component={ Article } />
+            <Route path="/" exact component={Home} />
+            <Route path="*" component={ NotFound } />
+          </Switch>
+        </HashRouter>
+      </div>
+    </MainWrapper>
   );
 }
 

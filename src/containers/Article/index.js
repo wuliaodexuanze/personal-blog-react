@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 // import { actionCreators } from './store';
-import Register from '../../components/Register';
+import Article from '../../common/Article';
 
 const mapStateToProps = (state) => {
   return {
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Article);
