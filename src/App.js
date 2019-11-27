@@ -12,12 +12,15 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
+import BackTop from 'antd/es/back-top';
 import { MainWrapper } from './style'
 import Side from './common/Side';
 import ContentList from './common/ContentList';
 import Home from './views/home';
 import Article from './views/article';
 import NotFound from './views/notFound';
+
+import 'antd/es/back-top/style/index.css';
 
 
 function App() {
@@ -35,6 +38,7 @@ function App() {
           </Switch>
         </HashRouter>
       </div>
+      <BackTop visibilityHeight={100} />
     </MainWrapper>
   );
 }

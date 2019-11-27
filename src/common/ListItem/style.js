@@ -43,6 +43,11 @@ export const ListItemWrapper = styled.section`
       font-size: .9em!important;
       opacity: .88;
     }
+
+    span {
+      position: relative;
+      left: -1px;
+    }
   }
 
   .viewimg {
@@ -53,6 +58,12 @@ export const ListItemWrapper = styled.section`
       height: 120px;
       padding: 3px;
       border: 1px solid #e5e5e5;
+      object-fit: cover;
+
+      @media (max-width: 768px) {
+        width: 100px;
+        height: 90px;
+      }
     }
 
     .ipic {
@@ -76,15 +87,31 @@ export const ListItemWrapper = styled.section`
     width: 160px;
     height: 120px;
     background: url(${shinePic}) no-repeat -160px 0;
-    margin: 4px
+    margin: 4px;
+
+    @media (max-width: 768px) {
+      width: 100px;
+      height: 90px;
+    }
   }
 
   .preview {
     font-size: .9em;
     color: #737373;
+    height: 86px;
+
+    @media (max-width: 768px) {
+      height: 90px;
+    }
   }
   .preem {
-    padding-top: 10px;
+    margin-top: 10px;
+    line-height: 2;
+
+    @media (max-width: 450px) {
+      display: none;
+    }
+
     span {
       margin-right: 10px;
     }

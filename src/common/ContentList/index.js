@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  useHistory
+} from 'react-router-dom';
 import Crumbs from '../Crumbs';
 import ListItem from '../ListItem';
 import Paging from '../../components/Paging';
@@ -7,6 +10,10 @@ import {
 } from './style';
 
 function ContentList() {
+
+  const history = useHistory();
+  console.log(history);
+
   const crumbsData = [
     {
       name: '主页',

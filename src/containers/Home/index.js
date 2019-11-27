@@ -4,7 +4,8 @@ import Home from '../../components/Home';
 
 const mapStateToProps = (state) => {
   return {
-    topList: state.home.topList
+    topList: state.home.topList,
+    blogList: state.home.blogList
   }
 }
 
@@ -12,8 +13,8 @@ const mapDispatchToProps = (dispatch) => ({
   getBlogTopList() {
     dispatch(actionCreators.getBlogTopList());
   },
-  getBlogBlist(dispatch) {
-    dispatch(actionCreators.getBlogBlist());
+  getBlogList() {
+    dispatch(actionCreators.getBlogList());
   }
 });
 

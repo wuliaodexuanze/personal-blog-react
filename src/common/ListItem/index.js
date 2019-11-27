@@ -8,51 +8,86 @@
  */
 import React from 'react';
 import FontA from 'react-fontawesome';
+import moment from 'moment';
 import {
   Link
 } from 'react-router-dom';
 import {
   ListItemWrapper
 } from './style';
-import listPic from '../../statics/picture/1-1f5301s915s8.gif';
 
-function ListItem () {
+function ListItem (props) {
+
+  const {
+    id,
+    title = '',
+    desc = '',
+    image = '',
+    create_time = 0,
+    classify = [],
+    fav_nums = 0,
+    comment_nums = 0
+  } = props;
 
   return (
     <ListItemWrapper>
       <h2 className="title">
-        <span className="category">
-          <Link to="/web" rel="category tag">前端</Link>
-          <FontA name="caret-right" />
-        </span>
-        <Link className="text" to="/article/1" target="ablank">如果没有略缩图，就不会显示前面的图片！</Link>
+        {
+          classify[0] ? (
+            <span className="category">
+              < Link to = {
+                {
+                  pathname: classify[0].path,
+                  query: {
+                    type: id
+                  }
+                }
+              }
+              rel = "category tag" >
+                { classify[0].name || null }
+              </Link>
+              <FontA name="caret-right" />
+            </span>
+          ) : null
+        }
+      <Link className="text" to={`/article/${id}`}>{title}</Link>
       </h2>
       <div className="clearfix">
-        <div className="viewimg">
-          <Link
-          to="/article/1"
-          title=""
-          target="ablank"
-          className="ipic">
-            <img src={listPic} alt="略缩图" className="thumbnail" />
-            <span className="shine">&nbsp;</span>
-          </Link>
-        </div>
+        {
+          image ? (
+            <div className="viewimg">
+              <Link
+              to={`/article/${id}`}
+              title={title}
+              className="ipic">
+                <img src={image} alt="略缩图" className="thumbnail" />
+                <span className="shine">&nbsp;</span>
+              </Link>
+            </div>
+          ) : null
+        }
         <div className="preview">
-          如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就不会显示前面的图片！如果没有略缩图，就……
+          {
+            desc || title
+          }
         </div>
         <div className="preem">
           <span>
-            <FontA name="clock-o" />05-30
+            <FontA name="clock-o" />
+            {moment(create_time).format('YYYY-MM-DD')}
           </span>
           <span>
             <FontA name="comment-o" />
-            <Link to="/article/1" className="ds-thread-count">暂无评论</Link>
+            <Link to="/article/1" className="ds-thread-count">
+              {
+                comment_nums || '暂无评论'
+              }
+            </Link>
           </span>
           <span>
-            <FontA name="eye" />143
+            <FontA name="eye" />{fav_nums}
           </span>
-          <Link className="more" to="/article/1" title="阅读详情">阅读详情</Link>
+          <Link className="more" to={`/article/${id}`} title="阅读详情">阅读详情</Link>
         </div>
       </div>
     </ListItemWrapper>

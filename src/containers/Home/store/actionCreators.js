@@ -1,17 +1,13 @@
-import axios from 'axios';
 import * as actionTypes from './actionTypes';
+import { get } from '../../../plugins/http';
 
 /**
  * 获取轮播图数据
  */
 export const getBlogTopList = () => {
-  return (dispatch) => {
-    axios({
-      url: 'http://easy-mock.whgjh.top/mock/5ddce4d037e4477266785f4e/example_copy/v1/blog/hot',
-      method: 'get'
-    }).then(res => {
-      dispatch(changeTopList(res.data));
-    });
+  return async (dispatch) => {
+    const data = await get('/v1/blog/hot');
+    dispatch(changeTopList(data))
   }
 }
 
@@ -19,13 +15,9 @@ export const getBlogTopList = () => {
  * 获取博客列表
  */
 export const getBlogList = () => {
-  return (dispatch) => {
-    axios({
-      url: '',
-      method: 'get'
-    }).then(res => {
-      dispatch(changeBlogList(res.data));
-    });
+  return async (dispatch) => {
+    const data = await get('/v1/blog');
+    dispatch(changeBlogList(data))
   }
 };
 

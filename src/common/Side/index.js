@@ -18,8 +18,8 @@ import {
 
 function Side() {
   return (
-    <SideWrapper className="animated fadeInRight">
-      <div className="main-right">
+    <SideWrapper>
+      <div className="main-right animated fadeInRight">
         <div className="main">
           {/* <div className="author">
             <div className="topauthor">

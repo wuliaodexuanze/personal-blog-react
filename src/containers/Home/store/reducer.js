@@ -8,13 +8,13 @@ const defaultState = {
 const homeReducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.GET_BLOG_LIST:
-      return {
+      return {...Object.assign(state, {
         blogList: action.list
-      }
+      })};
     case actionTypes.GET_BLOG_TOP_LIST:
-      return {
+      return { ...Object.assign(state, {
         topList: action.list
-      }
+      })};
     default:
       return state;
   }

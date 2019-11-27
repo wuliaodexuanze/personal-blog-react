@@ -12,72 +12,57 @@ export const HomeWrapper = styled.div `
   
   .list-box {
     padding-top: 20px;
+
+    .paging {
+      text-align: center;
+
+      a, li {
+        box-sizing: border-box!important;
+      }
+    }
   }
 `;
 
 export const CarouselWrapper = styled.div `
   position: relative;
 
-  .slide-nav {
-    position: absolute;
-    top: 50%;
-    margin-top: -32px;
-    display: inline-block;
-    opacity: 0;
-    visibility: hidden;
-    width: 40px;
-    height: 62px;
-    text-align: center;
-    color: #d5d5d5;
-    background: rgba(0,0,0,.3);
-
-    span {
-      position: relative;
-      top: 7px;
-    }
-  }
-  
   .slide-box {
-    max-height: 260px;
-    overflow: hidden;
     
     .item {
+      position: relative;
+      max-height: 260px;
+      overflow: hidden;
+
       img {
-        object-fit: cover;
+        object-fit: contain;
+      }
+
+      .title {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3.5em;
+        line-height: 3em;
+        text-indent: 2em;
+        font-size: 1.2em;
+        background: rgba(0,0,0,.6);
+
+        @media (max-width: 768px) {
+          height: 2.5em;
+          line-height: 1.8em;
+          text-indent: 1em;
+          font-size: .8em;
+        }
+        
+        a {
+          color: #d8d8d8;
+
+          &:hover {
+            color: #fff;
+          }
+        }
       }
     }
-  }
-
-  .prev {
-    left: 0;
-  }
-
-  .next {
-    right: 0;
-  }
-
-  .show-enter {
-    opacity: 0;
-  }
-  .show-enter-active {
-    opacity: 1;
-    visibility: visible;
-    transition: all .3s ease-in;
-  }
-  .show-enter-done {
-    opacity: 1;
-    visibility: visible;
-  }
-  .show-exit {
-    opacity: 1;
-  }
-  .show-exit-active {
-    opacity: 0;
-    visibility: hidden;
-    transition: all .3s ease-out;
-  }
-  .show-exit-done {
-    opacity: 0;
-    visibility: hidden;
   }
 `;
