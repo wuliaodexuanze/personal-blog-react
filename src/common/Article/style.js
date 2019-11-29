@@ -37,6 +37,7 @@ export const ArticleWrapper = styled.article `
     .item {
       display: inline-block;
       margin-right: 10px;
+      color: #666;
 
       span {
         margin-right: 3px;
@@ -50,6 +51,14 @@ export const ArticleWrapper = styled.article `
     }
     a {
       margin-right: 3px;
+      background: #bbb;
+      padding: 1px 2px;
+      color: #f8f8f8;
+
+      &:hover {
+        background: #09f;
+        color: #fff;
+      }
     }
   }
 
@@ -59,6 +68,7 @@ export const ArticleWrapper = styled.article `
     font-size: .85em;
     background-color: #f7f7f7;
     color: #393a3b;
+    overflow-x: auto;
   }
 
   .paging {

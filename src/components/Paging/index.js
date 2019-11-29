@@ -1,21 +1,17 @@
 import React from 'react';
+import Pagination from 'antd/es/pagination';
+import 'antd/es/pagination/style/index.css';
 import {
   PagingWrapper
 } from './style';
 
-function Paging() {
+function Paging({
+  total
+}) {
 
   return (
     <PagingWrapper>
-      <div className="census">
-        <span className="pageinfo">
-          共
-          <strong>1</strong>
-          页
-          <strong>2</strong>
-          条&nbsp;记录
-        </span>
-      </div>
+      <Pagination defaultCurrent={1} total={total} size="small" />
     </PagingWrapper>
   )
 }

@@ -19,11 +19,6 @@ export const SideItemWrapper = styled.section `
     line-height: 35px;
     display: inherit;
     border: 1px solid #ececec;
-    &:before {
-      content: "\f0c9";
-      font-family: FontAwesome;
-      padding-right: 5px;
-    }
   }
 
   .list {
@@ -41,6 +36,10 @@ export const SideItemWrapper = styled.section `
     padding: 10px 0;
     height: auto;
     overflow: auto;
+
+    .title {
+      margin-right: 5px;
+    }
 
     img {
       height: 60px;

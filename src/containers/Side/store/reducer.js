@@ -1,19 +1,19 @@
 import * as actionTypes from './actionTypes';
 
 const defaultState = {
-  detail: {}
+  data: {}
 }
 
-const articleReducer = (state = defaultState, action) => {
+const sideReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.GET_DETAIL:
+    case actionTypes.GET_DATA:
       return {
         ...state,
-        detail: action.detail
+        data: action.data
       }
     default:
       return state;
   }
 }
 
-export default articleReducer;
+export default sideReducer;

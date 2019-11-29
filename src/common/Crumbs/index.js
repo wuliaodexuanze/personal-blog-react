@@ -1,10 +1,16 @@
-import React, { Fragment } from 'react';
+import React, {
+  Fragment,
+  memo
+} from 'react';
+import {
+  Link
+} from 'react-router-dom';
 import FontA from 'react-fontawesome';
 import {
   CrumbsWrapper
 } from './style';
 
-function Crumbs(props) {
+const Crumbs = memo(function Crumbs(props) {
   const { crumbs = [] } = props;
   const crumbsLen = crumbs.length - 1;
   return (
@@ -15,13 +21,13 @@ function Crumbs(props) {
             crumbsLen === index
             ? <strong key={item.name}>{item.name}</strong>
             : (<Fragment key={index}>
-                <a href={item.path}>{item.name}</a>
+                <Link to={item.path}>{item.name}</Link>
                 <FontA name="angle-right" />
               </Fragment>)
           ))
         }
     </CrumbsWrapper>
   )
-}
+});
 
 export default Crumbs;

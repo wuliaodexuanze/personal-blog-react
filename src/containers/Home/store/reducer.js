@@ -2,14 +2,14 @@ import * as actionTypes from './actionTypes';
 
 const defaultState = {
   topList: [],
-  blogList: []
+  blogsData: {}
 }
 
 const homeReducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.GET_BLOG_LIST:
       return {...Object.assign(state, {
-        blogList: action.list
+        blogsData: action.data
       })};
     case actionTypes.GET_BLOG_TOP_LIST:
       return { ...Object.assign(state, {

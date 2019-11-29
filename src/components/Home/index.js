@@ -7,44 +7,56 @@
  * @LastEditTime: 2019-11-21 23:39:15
  */
 import React, {
-  useEffect
+  Fragment,
+  useEffect,
+  useMemo
 } from 'react';
 import { Link } from 'react-router-dom';
 import {
   size
 } from 'lodash';
 import Carousel from 'antd/es/carousel';
-import Pagination from 'antd/es/pagination';
+import Empty from 'antd/es/empty';
 import ListItem from '../../common/ListItem';
+import Page from '../Paging';
 import 'antd/es/carousel/style/index.css';
-import 'antd/es/pagination/style/index.css';
+import 'antd/es/empty/style/index.css';
 import {
   HomeWrapper,
   CarouselWrapper
 } from './style';
 
 
-function Home(props) {
+function Home({
+  topList = [],
+  blogsData = {},
+  getBlogTopList,
+  getBlogList
+}) {
+
   const {
-    topList,
-    blogList,
-    getBlogTopList,
-    getBlogList
-  } = props;
+    list:  blogList,
+    total
+  } = blogsData;
+
+  const toplist = useMemo(() => topList, [topList]);
+  const bloglist = useMemo(() => blogList, [blogList]);
 
   useEffect(() => {
     getBlogTopList();
     getBlogList();
   }, [getBlogTopList, getBlogList]);
+
+  
   return (
     <HomeWrapper>
       <CarouselWrapper>
         <ul className="slide-box" >
           {
-            size(topList) > 0 ? (
+            size(toplist) > 0 ? (
               <Carousel autoplay>
               {
-                topList.map(item => (
+                toplist.map(item => (
                   <li className="item" key={`top_${item.id}`}>
                     <Link to={'/article/' + item.id}>
                       <img alt={item.title} src={item.image} />
@@ -62,13 +74,21 @@ function Home(props) {
       </CarouselWrapper>
       <div className="list-box">
         {
-          size(blogList) > 0 ? (
-            blogList.map(item => (<ListItem key={`list_${item.id}`} {...item} />))
-          ) : null
+          size(bloglist) > 0 ? (
+            <Fragment>
+              {
+                bloglist.map(item => (
+                  <ListItem key={`list_${item.id}`} {...item} />)
+                )
+              }
+              <div className="paging">
+                <Page total={total} />
+              </div>
+            </Fragment>
+          ) : <Empty
+                image={Empty.PRESENTED_IMAGE_SIMPLE}
+                description="暂无数据" / >
         }
-        <div className="paging">
-          <Pagination defaultCurrent={6} total={500} size="small" />
-        </div>
       </div>
     </HomeWrapper>
   )

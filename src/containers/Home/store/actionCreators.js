@@ -7,23 +7,23 @@ import { get } from '../../../plugins/http';
 export const getBlogTopList = () => {
   return async (dispatch) => {
     const data = await get('/v1/blog/hot');
-    dispatch(changeTopList(data))
+    dispatch(changeTopList(data));
   }
 }
 
 /**
  * 获取博客列表
  */
-export const getBlogList = () => {
+export const getBlogList = ({ offset=0, limit=10 }) => {
   return async (dispatch) => {
-    const data = await get('/v1/blog');
-    dispatch(changeBlogList(data))
+    const data = await get('/v1/blog', {offset, limit});
+    dispatch(changeBlogList(data));
   }
 };
 
-const changeBlogList = (list) => ({
+const changeBlogList = (data) => ({
   type: actionTypes.GET_BLOG_LIST,
-  list
+  data
 });
 
 const changeTopList = (list) => ({

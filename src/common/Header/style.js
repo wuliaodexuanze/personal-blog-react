@@ -237,12 +237,16 @@ export const NavWrapper = styled.nav `
         color: #fff;
         text-shadow: 0 1px 0 rgba(0,0,0,0.3);
         transition: all .1s ease-in;
+
+        &:hover {
+          background: rgba(0,0,0,0.1);
+        }
       }
     }
 
     .current_page_item {
       a {
-        background-color: rgba(0,0,0,0.1);
+        background-color: rgba(0,0,0,0.2);
       }
     }
   }

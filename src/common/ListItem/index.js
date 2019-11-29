@@ -6,7 +6,9 @@
  * @LastEditors: jayafs
  * @LastEditTime: 2019-11-21 21:37:31
  */
-import React from 'react';
+import React, {
+  memo
+} from 'react';
 import FontA from 'react-fontawesome';
 import moment from 'moment';
 import {
@@ -16,19 +18,17 @@ import {
   ListItemWrapper
 } from './style';
 
-function ListItem (props) {
-
-  const {
-    id,
-    title = '',
-    desc = '',
-    image = '',
-    create_time = 0,
-    classify = [],
-    fav_nums = 0,
-    comment_nums = 0
-  } = props;
-
+const ListItem = memo(function ListItem({
+  id,
+  title = '',
+  desc = '',
+  image = '',
+  create_time = 0,
+  classify = [],
+  user=[],
+  fav_nums = 0,
+  comment_nums = 0
+}) {
   return (
     <ListItemWrapper>
       <h2 className="title">
@@ -72,26 +72,37 @@ function ListItem (props) {
           }
         </div>
         <div className="preem">
-          <span>
-            <FontA name="clock-o" />
-            {moment(create_time).format('YYYY-MM-DD')}
+          <span className="item" title="作者">
+            <FontA name="user" />
+            <Link to='/about'>
+              {
+                user[0] && user[0].nickname
+              }
+            </Link>
           </span>
-          <span>
-            <FontA name="comment-o" />
+          <span className="item" title="评论数">
+            <FontA name="comment" />
             <Link to="/article/1" className="ds-thread-count">
               {
                 comment_nums || '暂无评论'
               }
             </Link>
           </span>
-          <span>
-            <FontA name="eye" />{fav_nums}
+          <span className="item" title="点赞数">
+            <FontA name="star" />{fav_nums}
+          </span>
+          <span className="item" title="发布时间">
+            <FontA name="clock-o" />
+            {moment(create_time).format('YYYY-MM-DD')}
           </span>
           <Link className="more" to={`/article/${id}`} title="阅读详情">阅读详情</Link>
         </div>
       </div>
+      <a href="/" className="cllect" title="点我收藏">
+        <FontA name="share-alt-square" size="2x" />
+      </a>
     </ListItemWrapper>
   )
-}
+});
 
 export default ListItem;

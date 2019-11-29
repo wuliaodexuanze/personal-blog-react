@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 export const FooterWrapper = styled.footer`
   clear: both;
-	margin-top: 20px;
+	margin-top: 40px;
 	padding: 20px 10px;
 	background: #333;
 	color: #fff;
@@ -42,7 +42,11 @@ export const FooterWrapper = styled.footer`
 
   .ffooter {
     padding-top: 10px;
-    border-top: 1px solid rgba(255,255,255,.065);
+    border-top: none;
+
+    @media (min-width: 768px) {
+      border-top: 1px solid rgba(255,255,255,.065);
+    }
     text-align: center;
   }
 `;

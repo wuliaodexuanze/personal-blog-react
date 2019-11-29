@@ -136,9 +136,14 @@ export const SideWrapper = styled.div `
       display: inline-block;
       width: 48%;
       border-bottom: 0;
+      background: #f3f3f3;
+      border-radius: 50%;
+      text-align: center;
 
       a {
-        color: #666;
+        display: block;
+        font-size: .9em;
+        color: #333;
         &:hover {
           color: #00a4dc;
           text-decoration: underline;

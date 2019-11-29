@@ -6,59 +6,55 @@
  * @LastEditors: jayafs
  * @LastEditTime: 2019-11-21 21:48:10
  */
-import React from 'react';
+import React, {
+  memo
+} from 'react';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
+import FontA from 'react-fontawesome';
 import {
   SideItemWrapper
 } from './style';
-import listPic from '../../statics/picture/1-1f5301s915s8.gif';
 
-function SideItem() {
+ const SideItem = memo(function SideItem({
+   title = '',
+   list = [],
+   icon = 'align-justify'
+ }) {
+
   return (
     <SideItemWrapper>
-      <h3 className="head">推荐文章</h3>
-      <ul className="list">
-        <li className="item">
-          <div className="sideshow">
-            <a href="/" target="_ablank" title="">
-              <img src={listPic} className="icon wp-post-image" alt="" />
-            </a>
-            <a href="/" target="ablank" title="">
-              如果没有略缩图，就不会显示前面的图片！
-            </a>
-            <span className="datetime"> 2017/05/30</span>
-          </div>
-        </li>
-        <li className="item">
-          <div className="sideshow">
-            <a href="/" target="_ablank" title="这个没有略缩图，不会显示前面的图片！">
-              这个没有略缩图，不会显示前面的图片！
-            </a>
-            <span className="datetime"> 2016/06/05 </span> </div>
-        </li>
-        <li className="item">
-          <div className="sideshow">
-            <a href="/" target="_ablank" title="Dede两句代码增加自定义属性">
-              Dede两句代码增加自定义属性 </a>
-              <span className="datetime"> 2016/06/05</span>
+    <h3 className="head">
+      <FontA name={icon} />&nbsp;{title}
+    </h3>
+    <ul className="list">
+      {
+        list.map((item, index) => (
+          <li key={`list_${item.id}`} className="item">
+            <div className="sideshow">
+              {
+                index === 0  && (
+                  <Link to={`/article/${item.id}`} title="item.title">
+                    <img src={item.image} className="icon wp-post-image" alt={item.title} />
+                  </Link>
+                )
+              }
+              <Link
+                className="title"
+                to={`/article/${item.id}`}
+                title={item.title}>
+                {item.title}
+              </Link>
+              <span className="datetime">
+                {moment(item.create_time).format('YYYY-MM-DD')}
+              </span>
             </div>
-        </li>
-        <li className="item">
-          <div className="sideshow">
-            <a href="/" target="_ablank" title="Dede简单搬家"> Dede简单搬家</a>
-            <span className="datetime"> 2016/06/05</span>
-          </div>
-        </li>
-        <li className="item">
-          <div className="sideshow">
-            <a href="/" target="_ablank" title="Html技巧-简单的把Table转成Div">
-              Html技巧-简单的把Table转成Div!
-            </a>
-            <span className="datetime"> 2016/06/05</span>
-          </div>
-        </li>
-      </ul>
-    </SideItemWrapper>
+          </li>
+        ))
+      }
+    </ul>
+  </SideItemWrapper>
   )
-}
+});
 
 export default SideItem;

@@ -2,20 +2,32 @@ import * as actionTypes from './actionTypes';
 
 const defaultState = {
   showSearch: false,
-  showCollapseNav: false
+  showCollapseNav: false,
+  navs: [],
+  hashurl: '/'
 };
 
 const headerReducer = (state = defaultState, action) => {
   switch (action.type) {
     case actionTypes.SEARCH_TOGGLE:
       return {
-        showSearch: !state.showSearch,
-        showCollapseNav: state.showCollapseNav
+        ...state,
+        showSearch: !state.showSearch
       };
     case actionTypes.COLLAPSE_TOGGLE:
       return {
-        showCollapseNav: !state.showCollapseNav,
-        showSearch: state.showSearch
+        ...state,
+        showCollapseNav: !state.showCollapseNav
+      }
+    case actionTypes.GET_NAV:
+      return {
+        ...state,
+        navs: action.list
+      }
+    case actionTypes.HASH_URL:
+      return {
+        ...state,
+        hashurl: action.hashurl
       }
     default:
       return state;

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useMemo
+} from 'react';
 import {
   HashRouter,
   Link
@@ -6,7 +8,7 @@ import {
 import { CSSTransition } from 'react-transition-group';
 import FontA from 'react-fontawesome';
 import SliderNav from '../../plugins/sliderNav';
-import Config from '../../config';
+import config from '../../config';
 import 'animate.css';
 import {
   HeaderWrapper,
@@ -14,21 +16,31 @@ import {
 } from './style';
 import logoPic from '../../statics/logo.png';
 
-function Header(props) {
-  const ref = React.createRef();
-  const {
-    showSearch,
-    showCollapseNav,
-    handleSearchBtnClick,
-    handleCollapseNavClick
-  } = props;
+function Header({
+  navs = [],
+  showSearch = false,
+  showCollapseNav = false,
+  hashurl='',
+  handleSearchBtnClick,
+  handleCollapseNavClick,
+  changeHashUrl,
+  getNavs
+}) {
 
+  if (navs.length === 0) {
+    getNavs();
+  }
+
+  const ref = React.createRef();
+
+  const urlhash = useMemo(() => hashurl, [hashurl]);
+  
   window.onhashchange = () => {
     if (showCollapseNav) {
       handleCollapseNavClick();
     }
+    changeHashUrl(window.location.hash);
   }
-
 
   return(
     <HeaderWrapper className="animated fadeInDown">
@@ -44,7 +56,7 @@ function Header(props) {
           <li>
             <a
               className="link"
-              href={`http://wpa.qq.com/msgrd?v=3&uin=${Config.QQ}&site=qq&menu=yes`}
+              href={config.QQ}
               title="QQ联系"
               target="blank">
                 <FontA
@@ -68,7 +80,7 @@ function Header(props) {
           <li>
             <a
               className="link"
-              href="https://github.com/wuliaodexuanze"
+              href={config.github}
               title="github">
               <FontA
                 name="github-square"
@@ -127,17 +139,34 @@ function Header(props) {
             <div ref={ref} className="navbar-collapse">
               <HashRouter>
                 <ul>
-                  <li className="menu-item current_page_item">
+                  <li
+                  className={
+                    (urlhash === '#/') || (urlhash === '/')
+                    ? 'menu-item current_page_item'
+                    : 'menu-item'
+                  }>
                     <Link to="/" replace>首页</Link>
                   </li>
-                  <li className="menu-item">
-                    <Link to="/web" replace>前端</Link>
-                  </li>
-                  <li className="menu-item">
-                    <Link to="/server" replace>后端</Link>
-                  </li>
-                  <li className="menu-item">
-                    <Link to="/about" replace>关于博主</Link>
+                  {
+                    navs.map(item => (
+                      <li
+                        key={`nav_${item.id}`}
+                        className={
+                          ('#'+item.path) === urlhash 
+                          ? 'menu-item current_page_item' 
+                          : 'menu-item' 
+                        }>
+                        <Link to={item.path} replace>{item.name}</Link>
+                      </li>
+                    ))
+                  }
+                  <li
+                    className={
+                      urlhash === '#/about'
+                      ? 'menu-item current_page_item'
+                      : 'menu-item'
+                    }>
+                    <Link to="/about" replace>关于</Link>
                   </li>
                 </ul>
               </HashRouter>

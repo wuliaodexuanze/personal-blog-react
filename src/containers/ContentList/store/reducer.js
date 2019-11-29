@@ -1,19 +1,19 @@
 import * as actionTypes from './actionTypes';
 
 const defaultState = {
-  detail: {}
+  list: []
 }
 
-const articleReducer = (state = defaultState, action) => {
+const contentlistReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case actionTypes.GET_DETAIL:
+    case actionTypes.GET_LIST:
       return {
         ...state,
-        detail: action.detail
+        list: action.list
       }
     default:
       return state;
   }
 }
 
-export default articleReducer;
+export default contentlistReducer;

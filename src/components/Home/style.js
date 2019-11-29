@@ -42,8 +42,8 @@ export const CarouselWrapper = styled.div `
         left: 0;
         bottom: 0;
         width: 100%;
-        height: 3.5em;
-        line-height: 3em;
+        height: 2.8em;
+        line-height: 2.6em;
         text-indent: 2em;
         font-size: 1.2em;
         background: rgba(0,0,0,.6);

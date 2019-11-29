@@ -78,7 +78,7 @@ http.interceptors.request.use((originConfig) => {
 
 http.interceptors.response.use(async (res) => {
   let { error_code, msg } = res.data;
-  let message = ''// 错误提示
+  let info = ''// 错误提示
   if (res.status.toString().charAt(0) === '2') {
     return res.data;
   }
@@ -103,10 +103,10 @@ http.interceptors.response.use(async (res) => {
     console.log('msg', msg);
 
     if (params && params.showBackend) {
-      [message] = msg;
+      [info] = msg;
     }
 
-    message.error(message);
+    message.error(info);
 
     resolve(res.data);
   });

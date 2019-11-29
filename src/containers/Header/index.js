@@ -5,7 +5,9 @@ import Header from '../../common/Header';
 const mapStateToProps = (state) => {
   return {
     showSearch: state.header.showSearch,
-    showCollapseNav: state.header.showCollapseNav
+    showCollapseNav: state.header.showCollapseNav,
+    navs: state.header.navs,
+    hashurl: state.header.hashurl
   }
 }
 
@@ -16,6 +18,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     handleCollapseNavClick() {
       dispatch(actionCreators.collapseToggle());
+    },
+    changeHashUrl(url) {
+      dispatch(actionCreators.changeHashUrl(url));
+    },
+    getNavs() {
+      dispatch(actionCreators.getNavs());
     }
   }
 }

@@ -9,13 +9,17 @@
 import styled from 'styled-components';
 import shinePic from '../../statics/imgs/shine_brands.png';
 
-export const ListItemWrapper = styled.section`
-  overflow: hidden;
+export const ListItemWrapper = styled.article`
+  position: relative;
   margin-bottom: 20px;
-  padding-bottom: 20px;
   background-color: white;
   padding: 20px;
   border: 1px solid #ececec;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
 
   .title {
     display: inline-block;
@@ -29,6 +33,10 @@ export const ListItemWrapper = styled.section`
       &:hover {
         color: #00a4dc;
       }
+    }
+
+    @media (max-width: 768px) {
+      padding-right: 11%;
     }
   }
   
@@ -112,23 +120,26 @@ export const ListItemWrapper = styled.section`
       display: none;
     }
 
-    span {
+    .item {
       margin-right: 10px;
+      font-size: .9em;
+      color: #666;
+    }
+
+    .fa {
+      margin-right: 5px;
+      color: #555;
     }
     a {
       font-size: .9em;
-      color: #999;
+      color: #666;
+      
+      &:hover {
+        color: #0086e3;
+      }
     }
   }
-  .preem span {
-    font-size: .9em;
-    color: #999;
-  }
-  .ds-thread-count {
-    &:hover {
-      color: #0086e3;
-    }
-  }
+
   .more {
     float: right;
     padding: 2px 10px;
@@ -136,11 +147,31 @@ export const ListItemWrapper = styled.section`
     &:hover {
       border-radius: 2px;
       background: #0086e3;
-      color: #fff;
+      color: #fff!important;
     }
 
     @media (max-width: 320px) {
       display: none;
+    }
+  }
+
+  .cllect {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #999;
+
+    @media (max-width: 768px) {
+      top: 10px;
+      right: 10px;
+    }
+
+    &.active {
+      color: #0090ce;
+    }
+
+    &:hover {
+      color: #0086e3;
     }
   }
 `;

@@ -6,7 +6,10 @@
  * @LastEditors: jayafs
  * @LastEditTime: 2019-11-21 23:39:15
  */
-import React from 'react';
+import React, {
+  useEffect,
+  useMemo
+} from 'react';
 import { Link } from 'react-router-dom';
 import FontA from 'react-fontawesome';
 import SiderItem from '../SideItem';
@@ -16,7 +19,25 @@ import {
 } from './style';
 // import avatarPic from '../../statics/picture/avatar.jpeg';
 
-function Side() {
+function Side({
+  data: {
+    recommendList=[],
+    popularList=[],
+    links=[]
+  },
+  getData
+}) {
+
+  const allData = useMemo(() => ({
+    reclist: recommendList,
+    linklist: links,
+    populist: popularList
+  }), [recommendList, popularList, links])
+
+  useEffect(() => {
+    getData();
+  }, [getData]);
+
   return (
     <SideWrapper>
       <div className="main-right animated fadeInRight">
@@ -34,18 +55,31 @@ function Side() {
             <Link to="/register" className="btn register-btn">注册</Link>
           </div>
           <div className="right-box">
-            <SiderItem />
-            <SiderItem />
+            <SiderItem
+              title="热门文章"
+              icon="free-code-camp"
+              list={allData.reclist} />
+            <SiderItem
+              title="推荐文章"
+              list={allData.populist}
+              icon="american-sign-language-interpreting" />
             <div className="linkcat">
               <h3 className="head">
-                <FontA name="link" /> 友情链接
+                <FontA name="link" />&nbsp;友情链接
               </h3>
               <ul className="list">
-                <li className="item"><a href="/" target="blank">npm</a></li>
-                <li className="item"><a href="/" target="blank">MDN</a></li>
-                <li className="item"><a href="/" target="blank">Github</a></li>
-                <li className="item"><a href="/" target="blank">Gitee</a></li>
-                <li className="item"><a href="/" target="blank">博客园</a> </li>
+                {
+                  allData.linklist 
+                  ? allData.linklist.map(item => (
+                    <li key={`link_${item.id}`} className="item">
+                      <a
+                        href={item.path}
+                        title={item.title}
+                        target="blank">{item.title}</a>
+                    </li>
+                  ))
+                  : null
+                }
               </ul>
             </div>
           </div>
