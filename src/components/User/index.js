@@ -73,7 +73,11 @@ function User() {
                 alt="头像"
               />
             }
-            title={<Fragment><FontA name="user" />&nbsp;用户昵称</Fragment>}
+            title={
+              <Fragment>
+                <FontA name="user" />&nbsp;用户昵称
+              </Fragment>
+            }
             description={
               <ul>
                 <li>
@@ -87,24 +91,19 @@ function User() {
               </ul>
             }
           />
+          <div className="change-avatar">
+            <Upload>
+              <Button size="small" type="primary">
+                <FontA name="upload" />&nbsp;更改头像
+              </Button>
+            </Upload>
+          </div>
         </Card>
       </div>
       <div className="main-box">
         <Tabs type="card" defaultActiveKey="1">
           <TabPane tab="用户中心" key="1">
             <ul className="user-center">
-              <li className="clearfix user-img">
-                <div className="left">
-                  <img className="avatar" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"  alt="" />
-                </div>
-                <div className="right">
-                  <Upload>
-                    <Button type="primary">
-                      <FontA name="upload" />&nbsp;更改头像
-                    </Button>
-                  </Upload>
-                </div>
-              </li>
               <li className="clearfix">
                 <div className="left">
                   昵称

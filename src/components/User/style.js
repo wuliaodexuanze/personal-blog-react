@@ -16,8 +16,10 @@ export const UserWrapper = styled.div`
       background: rgba(255, 255, 255, 0.5);
     }
     .ant-card-body {
+      padding: 24px 24px 66px;
+
       @media (max-width: 768px) {
-        padding: 10px;
+        padding: 10px 10px 34px;
       }
 
       .ant-card-meta-title {
@@ -41,6 +43,17 @@ export const UserWrapper = styled.div`
           width: 80px!important;
           height: 80px!important;
         }
+      }
+    }
+
+    .change-avatar {
+      position: absolute;
+      bottom: 24px;
+      left: 36px;
+
+      @media (max-width: 768px) {
+        left: 10px;
+        bottom: 10px;
       }
     }
   }
@@ -168,18 +181,6 @@ export const UserWrapper = styled.div`
     }
     .right {
       float: left;
-    }
-    .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      overflow: hidden;
-    }
-
-    .user-img {
-      .right {
-        line-height: 100px;
-      }
     }
   }
 `;
