@@ -1,3 +1,8 @@
-import NotFound from '../../components/NotFound';
+import Loadable from 'react-loadable';
 
-export default NotFound;
+export default Loadable({
+  loader: () => import('../../components/NotFound'),
+  loading() {
+    return null
+  }
+});

@@ -44,15 +44,14 @@ export const SideWrapper = styled.div `
       overflow: hidden;
       background-color: #fff;
       border: 1px solid #ececec;
-      cursor: pointer;
 
       img {
         float: left;
-        margin-right: 20px;
+        margin-right: 10px;
         margin-bottom: 10px;
         border-radius: 50%;
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         border: 3px solid #fff;
         box-shadow: 1px 1px 7px #777;
 
@@ -61,6 +60,27 @@ export const SideWrapper = styled.div `
           animation-duration: 2s;
           animation-iteration-count: 1;
           animation-delay: .3s;
+        }
+      }
+
+      .logout-btn {
+        margin-top: 0;
+        margin-left: 94px;
+        padding: 5px 10px;
+        background: #ff4d4f;
+        color: #fff;
+        font-size: .7em;
+        border: none;
+        cursor: pointer;
+        outline: none;
+
+        @media (min-width: 768px) {
+          margin-top: 15px;
+          margin-left: 0;
+        }
+
+        &:hover,&:active,&:visited,&:focus {
+          background: #ff7875;
         }
       }
     }
@@ -98,57 +118,31 @@ export const SideWrapper = styled.div `
     }
 
     .intag {
-      padding: 5px 10px;
+      display: inline-block;
+      width: 60px;
+      line-height: 1.6;
       background: #0090ce;
       color: #fff;
-      font-size: .7em;
-      margin-right: 10px;
+      font-size: 12px;
+      margin-right: 6px;
+
+      .fa {
+        margin-right: 6px;
+        width: 16px;
+        text-align: right;
+      }
     }
     .names {
       font-weight: 600;
     }
     .talk {
       font-size: .8em;
-      padding: 5px;
-      display: block;
       padding-top: 10px;
+      word-break: break-all;
     }
   }
 
-  .linkcat {
-    background: #fff;
-
-    .head {
-      color: #000;
-      padding-left: 10px;
-      font-size: 15px;
-      line-height: 35px;
-      display: inherit;
-      border: 1px solid #ececec;
-    }
-    .list {
-      padding: 10px;
-      border: 1px solid #ececec;
-      border-top: 0;
-    }
-    .item {
-      padding: 3px 0;
-      display: inline-block;
-      width: 48%;
-      border-bottom: 0;
-      background: #f3f3f3;
-      border-radius: 50%;
-      text-align: center;
-
-      a {
-        display: block;
-        font-size: .9em;
-        color: #333;
-        &:hover {
-          color: #00a4dc;
-          text-decoration: underline;
-        }
-      }
-    }
+  .tag-item {
+    margin-bottom: 20px;
   }
 `;

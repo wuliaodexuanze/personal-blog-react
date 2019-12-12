@@ -19,6 +19,10 @@ export const SideItemWrapper = styled.section `
     line-height: 35px;
     display: inherit;
     border: 1px solid #ececec;
+
+    .fa {
+      color: #666;
+    }
   }
 
   .list {

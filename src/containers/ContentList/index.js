@@ -1,17 +1,24 @@
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
 import ContentList from '../../common/ContentList';
+import { actionCreators as headerActionCreators } from '../Header/store';
 
 const mapStateToProps = (state) => {
   return {
     navs: state.header.navs,
-    list: state.contentList.list
+    listData: state.contentList.data
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  getList(path, query={}) {
-    dispatch(actionCreators.getList(path, query));
+  getList(path) {
+    dispatch(actionCreators.getList(path));
+  },
+  /**
+   * 显示输入框
+   */
+  showSearch() {
+    dispatch(headerActionCreators.showSearch(true));
   }
 })
 

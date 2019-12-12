@@ -1,3 +1,8 @@
-import Register from '../../containers/Register';
+import Loadable from 'react-loadable';
 
-export default Register;
+export default Loadable({
+  loader: () => import('../../containers/Register'),
+  loading() {
+    return null
+  }
+});

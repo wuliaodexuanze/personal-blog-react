@@ -12,6 +12,14 @@ export const ContentListWrapper = styled.div`
     padding-top: .5em;
   }
 
+  .empty {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
   .paging {
     margin: 20px;
     overflow: hidden;

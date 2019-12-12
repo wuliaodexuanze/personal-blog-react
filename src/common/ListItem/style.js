@@ -123,16 +123,16 @@ export const ListItemWrapper = styled.article`
     .item {
       margin-right: 10px;
       font-size: .9em;
-      color: #666;
+      color: #333;
     }
 
     .fa {
       margin-right: 5px;
-      color: #555;
+      color: #666;
     }
     a {
       font-size: .9em;
-      color: #666;
+      color: #333;
       
       &:hover {
         color: #0086e3;
@@ -152,26 +152,6 @@ export const ListItemWrapper = styled.article`
 
     @media (max-width: 320px) {
       display: none;
-    }
-  }
-
-  .cllect {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: #999;
-
-    @media (max-width: 768px) {
-      top: 10px;
-      right: 10px;
-    }
-
-    &.active {
-      color: #0090ce;
-    }
-
-    &:hover {
-      color: #0086e3;
     }
   }
 `;

@@ -112,6 +112,10 @@ export const NavWrapper = styled.nav `
   height: auto;
   background-color: #0090ce;
 
+  .hide {
+    display: none!important;
+  }
+
   .nav {
     padding-right: 0;
     padding-left: 0;

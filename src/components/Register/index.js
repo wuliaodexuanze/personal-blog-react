@@ -1,5 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Link
+} from 'react-router-dom';
 import 'animate.css';
 import {
   RegisterWrapper
@@ -13,6 +15,7 @@ function Register() {
         <div className="form">
           <form className="register-form">
             <input type="text" placeholder="昵称" autoComplete="off" required />
+            <input type="text" placeholder="用户名" autoComplete="off" required />
             <input type="email" placeholder="邮箱" autoComplete="off" required />
             <input type="password" placeholder="密码" autoComplete="off" required />
             <button>注册</button>

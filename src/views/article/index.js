@@ -1,3 +1,8 @@
-import Article from '../../containers/Article';
+import Loadable from 'react-loadable';
 
-export default Article;
+export default Loadable({
+  loader: () => import('../../containers/Article'),
+  loading() {
+    return null
+  }
+});

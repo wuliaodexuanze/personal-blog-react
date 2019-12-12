@@ -1,11 +1,11 @@
 import * as actionTypes from './actionTypes';
-import {get} from '../../../plugins/http';
+import {get} from '../../../utils/http';
 
 
 const changeData = (data) => ({
   type: actionTypes.GET_DATA,
   data
-})
+});
 
 export const getData = () => {
   return async (dispatch) => {

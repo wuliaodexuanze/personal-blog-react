@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import { get } from '../../../plugins/http';
+import { get } from '../../../utils/http';
 
 
 const changeNav = (list) => ({
@@ -20,12 +20,17 @@ export const changeHashUrl = (hashurl) => ({
   hashurl
 });
 
+export const showSearch = (state) => ({
+  type: actionTypes.HAS_SEARCH,
+  hasSearch: state
+});
+
 /**
  * 获取导航
  */
 export const getNavs = () => {
   return async (dispatch) => {
-    const navs = await get('/v1/nav');
+    const navs = await get('/v1/classify');
     dispatch(changeNav(navs));
   }
 }

@@ -4,7 +4,8 @@ const defaultState = {
   showSearch: false,
   showCollapseNav: false,
   navs: [],
-  hashurl: '/'
+  hashurl: '/',
+  hasSearch: false
 };
 
 const headerReducer = (state = defaultState, action) => {
@@ -28,6 +29,11 @@ const headerReducer = (state = defaultState, action) => {
       return {
         ...state,
         hashurl: action.hashurl
+      }
+    case actionTypes.HAS_SEARCH:
+      return {
+        ...state,
+        hasSearch: action.hasSearch
       }
     default:
       return state;

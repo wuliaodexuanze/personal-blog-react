@@ -1,13 +1,20 @@
 import React, {
-  useMemo
+  useMemo,
+  useEffect,
+  useCallback,
+  useRef,
+  useLayoutEffect
 } from 'react';
 import {
   HashRouter,
   Link
 } from 'react-router-dom';
+import {
+  trim
+} from 'lodash';
 import { CSSTransition } from 'react-transition-group';
 import FontA from 'react-fontawesome';
-import SliderNav from '../../plugins/sliderNav';
+import SliderNav from '../../utils/sliderNav';
 import config from '../../config';
 import 'animate.css';
 import {
@@ -19,21 +26,26 @@ import logoPic from '../../statics/logo.png';
 function Header({
   navs = [],
   showSearch = false,
+  hasSearch = false,
   showCollapseNav = false,
   hashurl='',
   handleSearchBtnClick,
   handleCollapseNavClick,
   changeHashUrl,
-  getNavs
+  getNavs,
+  search,
+  showSearchInpt
 }) {
-
-  if (navs.length === 0) {
-    getNavs();
-  }
-
-  const ref = React.createRef();
-
+  const searchInput = useRef();
   const urlhash = useMemo(() => hashurl, [hashurl]);
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    const searchInp = searchInput.current;
+    const val = trim(searchInp.value);
+    search(val, urlhash);
+    searchInp.value = '';
+    return false;
+  }, [search, urlhash]);
   
   window.onhashchange = () => {
     if (showCollapseNav) {
@@ -41,6 +53,16 @@ function Header({
     }
     changeHashUrl(window.location.hash);
   }
+
+  useLayoutEffect(() => {
+    // 处理搜索框，默认不显示，只在主页和web、server页显示
+    showSearchInpt();
+  }, [showSearchInpt, urlhash]);
+
+  useEffect(() => {
+    changeHashUrl(window.location.hash);
+    getNavs();
+  }, [getNavs, changeHashUrl]);
 
   return(
     <HeaderWrapper className="animated fadeInDown">
@@ -97,14 +119,16 @@ function Header({
             className = {
               showCollapseNav ? 'navbar-toggle active' : 'navbar-toggle'
             }
-            onClick={ () => handleCollapseNavClick(ref) }>
+            onClick={ () => handleCollapseNavClick() }>
               <FontA
                 name="list"
                 size="2x"
               />
             </li>
             <li
-              className="navbar-search-btn"
+              className={
+                hasSearch ? 'navbar-search-btn' : 'hide'
+              }
               onClick={ handleSearchBtnClick }>
               <div className = {
                 showSearch ? 'toggle-search active' : 'toggle-search'
@@ -115,19 +139,24 @@ function Header({
                 />
               </div>
             </li>
-            <li className="navbar-search-input">
+            <li className={
+              hasSearch ? 'navbar-search-input' : 'hide'
+            }>
               <CSSTransition
                 in={ showSearch }
                 timeout={300}
                 classNames="opacity"
                 unmountOnExit>
                 <div className="search-expand">
-                  <div className="search-expand-inner">
+                  <form
+                    className="search-expand-inner"
+                    onSubmit={handleSubmit}>
                     <input
+                      ref={searchInput}
                       type="text"
                       className="search"
                       placeholder="按回车键搜索..." />
-                  </div>
+                  </form>
                 </div>
               </CSSTransition>
             </li>
@@ -136,7 +165,7 @@ function Header({
             in={ showCollapseNav }
             timeout={200}
             effect='ease-out'>
-            <div ref={ref} className="navbar-collapse">
+            <div className="navbar-collapse">
               <HashRouter>
                 <ul>
                   <li

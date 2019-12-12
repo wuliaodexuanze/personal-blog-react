@@ -1,17 +1,22 @@
 import * as actionTypes from './actionTypes';
 import {
   get
-} from '../../../plugins/http';
+} from '../../../utils/http';
 
 
-const changeList = (list) => ({
+const changeList = (data) => ({
   type: actionTypes.GET_LIST,
-  list
+  data
 })
 
-export const getList = (path, {offset=0, limit=10}) => {
+export const getList = (path, query = {}) => {
+  const {
+    offset = 0,
+    limit = 10,
+    q = ''
+  } = query;
   return async (dispatch) => {
-    const data = await get(`/v1/blog${path}`, {offset, limit});
+    const data = await get(`/v1/blog${path}`, {offset, limit, q});
     dispatch(changeList(data));
   }
 }

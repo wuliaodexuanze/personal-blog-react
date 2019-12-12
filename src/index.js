@@ -36,7 +36,7 @@ ReactDOM.render(
           </Switch>
         </HashRouter>
         <Footer />
-        <BackTop visibilityHeight={100} />
+        <BackTop visibilityHeight={100} title="回到顶部" />
       </Provider>
     </Fragment>,
   document.getElementById('root'));

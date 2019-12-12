@@ -1,5 +1,7 @@
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
+import { actionCreators as headerActionCreators } from '../Header/store';
 import Home from '../../components/Home';
 
 const mapStateToProps = (state) => {
@@ -13,9 +15,15 @@ const mapDispatchToProps = (dispatch) => ({
   getBlogTopList() {
     dispatch(actionCreators.getBlogTopList());
   },
-  getBlogList(query={}) {
-    dispatch(actionCreators.getBlogList(query));
+  getBlogList() {
+    dispatch(actionCreators.getBlogList());
+  },
+  /**
+   * 显示输入框
+   */
+  showSearch() {
+    dispatch(headerActionCreators.showSearch(true));
   }
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Home));

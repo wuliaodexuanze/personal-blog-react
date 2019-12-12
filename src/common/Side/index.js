@@ -8,79 +8,114 @@
  */
 import React, {
   useEffect,
-  useMemo
+  useMemo,
+  useCallback
 } from 'react';
 import { Link } from 'react-router-dom';
 import FontA from 'react-fontawesome';
 import SiderItem from '../SideItem';
+import TagItem from '../TagItem';
 import 'animate.css';
 import {
   SideWrapper
 } from './style';
-// import avatarPic from '../../statics/picture/avatar.jpeg';
+import defaultAvatarPic from '../../statics/imgs/default-avatar.jpg';
 
 function Side({
-  data: {
+  sideData = {},
+  userInfo = {},
+  getData,
+  getUser,
+  logout
+}) {
+
+  const {
     recommendList=[],
     popularList=[],
-    links=[]
-  },
-  getData
-}) {
+    links=[],
+    tags
+  } = sideData || {};
+
+  const {
+    username,
+    nickname,
+    avatar,
+    email
+  } = userInfo || {};
 
   const allData = useMemo(() => ({
     reclist: recommendList,
     linklist: links,
-    populist: popularList
-  }), [recommendList, popularList, links])
+    populist: popularList,
+    taglist: tags
+  }), [recommendList, popularList, links, tags]);
+
+  const handleLogout = useCallback(() => logout(), [logout]);
 
   useEffect(() => {
     getData();
-  }, [getData]);
+    getUser();
+  }, [getData, getUser]);
 
   return (
     <SideWrapper>
       <div className="main-right animated fadeInRight">
         <div className="main">
-          {/* <div className="author">
-            <div className="topauthor">
-              <img alt="" src={avatarPic} />
-              <span className="intag">博客主人</span>
-              <span className="names">手里有糖</span><br />
-              <span className="talk"> 男，文化程度不高性格有点犯二，已经20来岁至今未婚，闲着没事喜欢研究各种代码，资深技术宅。</span>
-            </div>
-          </div> */}
-          <div className="no-login">
-            <Link to="/login" className="btn login-btn">登录</Link>
-            <Link to="/register" className="btn register-btn">注册</Link>
-          </div>
+          
+          {
+            username ? (
+              <div className="author">
+                <div className="topauthor">
+                  <Link to="/user">
+                    <img alt="" src={
+                      avatar || defaultAvatarPic
+                    } />
+                  </Link>
+                  <span className="intag">
+                    <FontA name="user-o" />
+                    用户名
+                  </span>
+                  <span className="names">{ username }</span>
+                  <br />
+                  <span className="intag">
+                    <FontA name="vcard-o" />
+                    昵称
+                  </span>
+                  <span className="talk">{ nickname || '暂无' }</span>
+                  <br />
+                  <span className="intag">
+                    <FontA name="envelope-o" />
+                    邮箱
+                  </span>
+                  <span className="talk">{ email || '暂无' }</span>
+                  <br />
+                  <button
+                    className="logout-btn"
+                    onClick={handleLogout}>退出登录</button>
+                </div>
+              </div>
+            ) : (
+              <div className="no-login">
+                <Link to="/login" className="btn login-btn">登录</Link>
+                <Link to="/register" className="btn register-btn">注册</Link>
+              </div>
+            )
+          }
+          
           <div className="right-box">
             <SiderItem
               title="热门文章"
-              icon="free-code-camp"
+              icon="fire"
               list={allData.reclist} />
             <SiderItem
               title="推荐文章"
               list={allData.populist}
-              icon="american-sign-language-interpreting" />
-            <div className="linkcat">
-              <h3 className="head">
-                <FontA name="link" />&nbsp;友情链接
-              </h3>
-              <ul className="list">
-                {
-                  allData.linklist 
-                  ? allData.linklist.map(item => (
-                    <li key={`link_${item.id}`} className="item">
-                      <a
-                        href={item.path}
-                        title={item.title}
-                        target="blank">{item.title}</a>
-                    </li>
-                  ))
-                  : null
-                }
-              </ul>
+              icon="graduation-cap" />
+            <div className="tag-item">
+              <TagItem list={allData.taglist} title="标签" icon="tags" />
+            </div>
+            <div className="tag-item">
+              <TagItem list={allData.linklist} title="友情链接" icon="link" />
             </div>
           </div>
         </div>

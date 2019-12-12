@@ -9,7 +9,7 @@ const contentlistReducer = (state = defaultState, action) => {
     case actionTypes.GET_LIST:
       return {
         ...state,
-        list: action.list
+        data: action.data
       }
     default:
       return state;

@@ -13,9 +13,10 @@ export const ArticleWrapper = styled.article `
     margin-bottom: 20px;
 
     h1 {
-      font-size: 24px;
+      font-size: 2em;
       line-height: normal;
-      color: #404040;
+      color: #24292e;
+      margin-top: .3em;
       margin-bottom: .3em;
     }
   }
@@ -110,6 +111,87 @@ export const ArticleWrapper = styled.article `
     }
   }
 
+  .favor {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: -62px;
+    width: 52px;
+    height: 52px;
+    font-size: 18px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: 0 3px 10px rgba(0,0,0,.2);
+    background-color: #fff;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+
+    @media (min-width: 1200px) {
+      display: block;
+    }
+
+    &.active {
+      color: #fff;
+      background: #046bb0;
+      box-shadow: 0 3px 10px #046bb0;
+    }
+
+    &:hover,&:active,&:visited,&:focus {
+      color: #fff;
+      background: rgba(255, 102, 1, .7);
+      border-color: rgba(255,102,1,.7);
+      box-shadow: 0 3px 10px rgba(255,102,1,.7);
+    }
+
+    .text {
+      display: block;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  }
+
+  .bottom-favor {
+    display: none;
+    flex-direction: column;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    margin: 20px auto 0;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,.2);
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 50%;
+
+    &.active {
+      color: #fff;
+      background: #046bb0;
+      box-shadow: 0 3px 10px #046bb0;
+    }
+
+    &:hover,&:active,&:visited,&:focus {
+      color: #fff;
+      background: rgba(255, 102, 1, .7);
+      border-color: rgba(255,102,1,.7);
+      box-shadow: 0 3px 10px rgba(255,102,1,.7);
+    }
+
+    @media (max-width: 1200px) {
+      display: flex;
+    }
+
+    .fa {
+      font-size: 22px;
+    }
+
+    .text {
+      display: block;
+      font-size: 14px;
+    }
+  }
+
   .comment {
 
     .comment-title {
@@ -183,8 +265,11 @@ export const ArticleWrapper = styled.article `
         color: #333;
 
         &:hover {
-          color: #f60;
+          color: #ff0000;
         }
+      }
+      .active {
+        color: #f60;
       }
     }
   }
@@ -209,7 +294,7 @@ export const MarkDownWrapper = styled.article`
   }
 
   text-size-adjust: 100%;
-  color: #24292e;
+  color: #353535;
   line-height: 1.5;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   font-size: 16px;

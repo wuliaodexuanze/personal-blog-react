@@ -8,7 +8,8 @@
  */
 import React, {
   useEffect,
-  useMemo
+  useMemo,
+  useCallback
 } from 'react';
 import {
   connect
@@ -21,6 +22,7 @@ import {
 import { MainWrapper } from './style'
 import Side from './containers/Side';
 import ContentList from './containers/ContentList';
+import Tags from './containers/Tags';
 import Home from './views/home';
 import Article from './views/article';
 import NotFound from './views/notFound';
@@ -29,12 +31,20 @@ import { actionCreators } from './containers/Header/store';
 
 function App({
   navs = [],
-  getNavs
+  getNavs,
+  location
 }) {
   const navlist = useMemo(() => navs, [navs]);
+  const getNavData = useCallback(() => getNavs, [getNavs]);
+
+  window.onbeforeunload = () => {
+    // 缓存历史记录
+    window.localStorage.setItem('history', JSON.stringify(location));
+  }
+
   useEffect(() => {
-    getNavs();
-  }, [getNavs]);
+    getNavData();
+  }, [getNavData]);
 
   return (
     <MainWrapper className="wrap">
@@ -48,6 +58,7 @@ function App({
               ))
             }
             <Route path="/article/:id" component={ Article } />
+            <Route path="/tags/:id" component={ Tags } />
             <Route path="/" exact component={Home} />
             <Route path="*" component={ NotFound } />
           </Switch>

@@ -33,24 +33,29 @@ const ListItem = memo(function ListItem({
     <ListItemWrapper>
       <h2 className="title">
         {
-          classify[0] ? (
+          classify ? (
             <span className="category">
-              < Link to = {
+              <Link
+                title={classify.name}
+               to = {
                 {
-                  pathname: classify[0].path,
+                  pathname: classify.path,
                   query: {
                     type: id
                   }
                 }
               }
               rel = "category tag" >
-                { classify[0].name || null }
+                { classify.name || null }
               </Link>
               <FontA name="caret-right" />
             </span>
           ) : null
         }
-      <Link className="text" to={`/article/${id}`}>{title}</Link>
+      <Link
+        className="text"
+        title={title}
+        to={`/article/${id}`}>{title}</Link>
       </h2>
       <div className="clearfix">
         {
@@ -68,7 +73,7 @@ const ListItem = memo(function ListItem({
         }
         <div className="preview">
           {
-            desc || title
+            desc
           }
         </div>
         <div className="preem">
@@ -76,7 +81,7 @@ const ListItem = memo(function ListItem({
             <FontA name="user" />
             <Link to='/about'>
               {
-                user[0] && user[0].nickname
+                user && user.username
               }
             </Link>
           </span>
@@ -95,12 +100,9 @@ const ListItem = memo(function ListItem({
             <FontA name="clock-o" />
             {moment(create_time).format('YYYY-MM-DD')}
           </span>
-          <Link className="more" to={`/article/${id}`} title="阅读详情">阅读详情</Link>
+          <Link className="more" to={`/article/${id}`} title={title}>阅读详情</Link>
         </div>
       </div>
-      <a href="/" className="cllect" title="点我收藏">
-        <FontA name="share-alt-square" size="2x" />
-      </a>
     </ListItemWrapper>
   )
 });

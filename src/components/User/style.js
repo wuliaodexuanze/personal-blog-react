@@ -7,53 +7,95 @@ export const UserWrapper = styled.div`
   .head-box {
     background: url(${headBgPic}) left top no-repeat;
     background-size: cover;
-    
-    .ant-card-bordered {
-      border: none;
+
+    .user-info {
+      word-break: break-all;
+      font-size: 1em;
+      @media (max-width: 768px) {
+        font-size: .8em;
+      }
+      .fa {
+        width: 16px;
+        text-align: right;
+      }
+
+      .label {
+        color: #333;
+        margin: 0 8px;
+      }
+    }
+    .ant-card-meta {
+      margin-top: 0;
     }
     
     .ant-card {
       background: rgba(255, 255, 255, 0.5);
     }
     .ant-card-body {
-      padding: 24px 24px 66px;
+      padding: 20px;
 
       @media (max-width: 768px) {
-        padding: 10px 10px 34px;
+        padding: 8px;
       }
 
       .ant-card-meta-title {
-        margin-top: 18px;
-
+        margin-bottom: 0;
         @media (max-width: 768px) {
-          margin-top: 10px;
           font-size: 1em;
         }
-      }
 
-      .ant-card-meta-description {
-        @media (max-width: 768px) {
-          font-size: .8em;
-        }
-      }
-    }
-    .ant-card-meta {
-      .ant-avatar {
-        @media (max-width: 768px) {
-          width: 80px!important;
-          height: 80px!important;
+        .fa {
+          margin-right: 4px;
+          width: 16px;
+          text-align: right;
         }
       }
     }
 
     .change-avatar {
-      position: absolute;
-      bottom: 24px;
-      left: 36px;
+      float: left;
 
-      @media (max-width: 768px) {
-        left: 10px;
-        bottom: 10px;
+      .ant-upload-select-picture-card {
+        position: relative;
+        margin-bottom: 0;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        object-fit: contain;
+
+        @media (max-width: 768px) {
+          width: 80px!important;
+          height: 80px!important;
+          margin-right: 2px;
+        }
+
+        .ant-upload {
+          padding: 3px;
+        }
+
+        .upload-icon {
+          position: absolute;
+          display: table-cell;
+          vertical-align: middle;
+          text-align: center;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          color: #fff;
+          background: rgba(0,0,.5);
+          opacity: .5;
+          filter:alpha(opacity=50);
+        }
+
+        .fa {
+          margin-top: 22px;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: auto;
       }
     }
   }
@@ -97,7 +139,16 @@ export const UserWrapper = styled.div`
         @media (max-width: 768px) {
           font-size: .8em;
         }
+
+        a {
+          color: #555;
+        }
       }
+    }
+
+    .ant-collapse-content-box {
+      padding-left: 20px;
+      padding-bottom: 10px;
     }
 
     .ant-timeline-item-tail {
@@ -122,19 +173,15 @@ export const UserWrapper = styled.div`
         font-size: .8em;
         color: #999;
       }
-    }
 
-    .time {
-      padding: 5px 0;
+      li {
+        list-style-type: circle;
+      }
     }
     .ant-timeline-item-right {
 
       .ant-timeline-item-content {
         text-align: left!important;
-      }
-
-      .time {
-        text-align: right;
       }
     }
   }
@@ -172,15 +219,23 @@ export const UserWrapper = styled.div`
     li {
       padding: 20px 0;
       border-bottom: 1px solid #f5f5f5;
+      line-height: 2.3;
     }
 
     .left {
       float: left;
       width: 150px;
-      line-height: 2.3;
     }
     .right {
       float: left;
     }
+  }
+
+  .paging {
+    margin: 20px;
+    overflow: hidden;
+    margin-left: 0px;
+    text-align: center;
+    font-size: 12px;
   }
 `;

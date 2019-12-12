@@ -12,8 +12,8 @@ function About() {
       path: '/'
     },
     {
-      name: '前端',
-      path: '/web'
+      name: '关于',
+      path: '/about'
     }
   ]
 
@@ -24,10 +24,9 @@ function About() {
         <h2 className="title"> 关于博主 </h2>
         <ul className="article_content"> 
           <li>前端小白</li>
-          <li>地址：这里是您的公司地址</li>
+          <li>地址：四川成都</li>
           <li>邮编：000000</li>
-          <li>电话：+86 0000 88888</li>
-          <li>传真：+86 0000 88888</li>
+          <li>手机：暂无</li>
           <li>网站：www.www.cn</li>
         </ul>
       </div>
