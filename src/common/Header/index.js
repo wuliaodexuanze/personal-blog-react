@@ -22,6 +22,7 @@ import {
   NavWrapper
 } from './style';
 import logoPic from '../../statics/logo.png';
+import weixinPic from '../../statics/imgs/weixin.png';
 
 function Header({
   navs = [],
@@ -96,7 +97,7 @@ function Header({
                 name="weixin"
                 size="2x"
               />
-              <div className="weixin"><img src={logoPic} alt="微信" /></div>
+              <div className="weixin"><img src={weixinPic} alt="微信" /></div>
             </a>
           </li>
           <li>
