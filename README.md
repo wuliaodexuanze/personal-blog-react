@@ -20,7 +20,7 @@
 
 ### 线上地址：
 
-[手里有糖个人博客]([http://sugar.whgjh.top](http://sugar.whgjh.top/))
+[手里有糖个人博客](http://sugar.whgjh.top/)
 
 ### 技术点
 
