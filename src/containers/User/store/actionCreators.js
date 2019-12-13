@@ -24,6 +24,7 @@ export const getUser = () => {
   return async (dispatch) => {
     const user = await User.getUser();
     dispatch(changeUser(user));
+    return user;
   }
 }
 

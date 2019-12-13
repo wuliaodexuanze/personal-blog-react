@@ -7,6 +7,7 @@ import {
 import Message from 'antd/es/message';
 import { saveTokens } from '../../utils/token';
 import { actionCreators } from './store';
+import { actionCreators as userActionCreators } from '../User/store';
 import Login from '../../components/Login';
 import 'antd/es/message/style/index.css';
 
@@ -16,7 +17,7 @@ const mapDispatchToProps = (dispatch) => ({
       const tokens = await dispatch(actionCreators.login(username, password));
       if (tokens && hasIn(tokens, 'access_token')) {
         saveTokens(tokens.access_token, tokens.refresh_token);
-        const user = await dispatch(actionCreators.getUser());
+        const user = await dispatch(userActionCreators.getUser());
         if (user && user.id) {
           Message.success('登录成功');
           return true;
