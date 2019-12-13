@@ -9,9 +9,9 @@ import ErrorCode from '../config/error-code';
 import 'antd/es/message/style/index.css';
 import 'antd/es/notification/style/index.css';
 
-// baseURL: 'http://easy-mock.whgjh.top/mock/5ddce4d037e4477266785f4e/jayafs',
+
 const config = {
-  baseURL: 'http://sugar.whgjh.top:5000',
+  baseURL: 'http://localhost:5000',
   timeout: 5 * 1000, // 请求超时时间
   crossDomain: true,
   validateStatus(status) {
