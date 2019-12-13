@@ -52,9 +52,11 @@ import {
                 <div className="sideshow">
                   {
                     index === 0  && (
-                      <Link to={`/article/${item.id}`} title="item.title">
-                        <img src={item.image} className="icon wp-post-image" alt={item.title} />
-                      </Link>
+                      item.image ? (
+                        <Link to={`/article/${item.id}`} title="item.title">
+                          <img src={item.image} className="icon wp-post-image" alt={item.title} />
+                        </Link>
+                      ) : null
                     )
                   }
                   <Link
