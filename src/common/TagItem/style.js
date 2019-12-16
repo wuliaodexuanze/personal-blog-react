@@ -36,7 +36,7 @@ export const TagItemWrapper = styled.section `
     background: #f3f3f3;
     border-radius: 50%;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 4px;
 
     a {
       display: block;
