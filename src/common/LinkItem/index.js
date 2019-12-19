@@ -7,34 +7,33 @@
  * @LastEditTime: 2019-11-21 21:48:10
  */
 import React, {
-  memo,
-  useState,
-  useEffect
+	memo,
+	useState,
+	useEffect
 } from 'react';
-import { Link } from 'react-router-dom';
 import FontA from 'react-fontawesome';
 import Skeleton from 'antd/es/skeleton';
 import 'antd/es/skeleton/style/index.css';
 import {
-  TagItemWrapper
+	LinkItemWrapper
 } from './style';
 
- const TagItem = memo(function TagItem({
-   title = '',
-   list = [],
-   icon = 'align-justify'
- }) {
+const LinkItem = memo(function LinkItem({
+	title = '',
+	list = [],
+	icon = 'align-justify'
+}) {
 
-  const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    if (list.length > 0) {
-      setLoading(() => false);
-    }
-  }, [list])
+	useEffect(() => {
+		if (list.length > 0) {
+			setLoading(() => false);
+		}
+	}, [list])
 
-  return (
-    <TagItemWrapper>
+	return (
+		<LinkItemWrapper>
       <h3 className="head" title={title}>
         <FontA name={icon} />&nbsp;{title}
       </h3>
@@ -48,19 +47,18 @@ import {
             list.map((item) => (
               <li key={`tag_${item.id}`} className="item">
                 <div className="item-text">
-                  <Link
-                    to={`/tags/${item.id}`}
-                    title={item.name}>
-                    {item.name}
-                  </Link>
+                  <a
+                  href={item.path}
+                  target="blank"
+                  title={item.name}>{item.name}</a>
                 </div>
               </li>
             ))
           }
         </Skeleton>
       </ul>
-    </TagItemWrapper>
-  )
+    </LinkItemWrapper>
+	)
 });
 
-export default TagItem;
+export default LinkItem;

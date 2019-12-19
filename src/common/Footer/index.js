@@ -22,7 +22,7 @@ function Footer() {
             <ul>
               <li>QQ:&nbsp;{config.qq}</li>
               <li>邮箱:&nbsp;{config.email}</li>
-              <li>Github:&nbsp;{config.github}</li>
+              <li>Github:&nbsp;<a title={config.github} href={config.github}>{config.github}</a></li>
             </ul>
           </div>
           <div className="group">

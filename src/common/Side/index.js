@@ -11,10 +11,13 @@ import React, {
   useMemo,
   useCallback
 } from 'react';
-import { Link } from 'react-router-dom';
+import {
+  Link
+} from 'react-router-dom';
 import FontA from 'react-fontawesome';
 import SiderItem from '../SideItem';
 import TagItem from '../TagItem';
+import LinkItem from '../LinkItem';
 import 'animate.css';
 import {
   SideWrapper
@@ -30,10 +33,10 @@ function Side({
 }) {
 
   const {
-    recommendList=[],
-    popularList=[],
-    links=[],
-    tags
+    recommendList = [],
+      popularList = [],
+      links = [],
+      tags
   } = sideData || {};
 
   const {
@@ -115,7 +118,7 @@ function Side({
               <TagItem list={allData.taglist} title="标签" icon="tags" />
             </div>
             <div className="tag-item">
-              <TagItem list={allData.linklist} title="友情链接" icon="link" />
+              <LinkItem list={allData.linklist} title="友情链接" icon="link" />
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@
 import styled from 'styled-components';
 import shinePic from '../../statics/imgs/shine_brands.png';
 
-export const ListItemWrapper = styled.article`
+export const ListItemWrapper = styled.article `
   position: relative;
   margin-bottom: 20px;
   background-color: white;

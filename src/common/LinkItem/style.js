@@ -8,7 +8,7 @@
  */
 import styled from 'styled-components';
 
-export const TagItemWrapper = styled.section `
+export const LinkItemWrapper = styled.section `
   background: #fff;
 
   .head {
