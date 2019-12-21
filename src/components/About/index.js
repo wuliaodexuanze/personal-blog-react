@@ -27,7 +27,7 @@ function About() {
           <li>地址：四川成都</li>
           <li>邮编：000000</li>
           <li>手机：暂无</li>
-          <li>网站：www.www.cn</li>
+          <li>网站：http://wayne.whgjh.top</li>
         </ul>
       </div>
     </AboutWrapper>

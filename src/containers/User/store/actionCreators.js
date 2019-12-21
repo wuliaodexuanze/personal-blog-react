@@ -1,6 +1,10 @@
 import * as actionTypes from './actionTypes';
 import User from '../../../utils/user';
-import { get, put } from '../../../utils/http';
+import {
+  get,
+  put
+} from '../../../utils/http';
+import config from '../../../config';
 
 const changeUser = (info) => ({
   type: actionTypes.GET_USER,
@@ -31,9 +35,15 @@ export const getUser = () => {
 /**
  * 获取用户收藏
  */
-export const getUserFavors = () => {
+export const getUserFavors = ({
+  offset = 0,
+  limit = config.limit
+}) => {
   return async (dispatch) => {
-    const favorData = await get('/v1/favor');
+    const favorData = await get('/v1/favor', {
+      offset,
+      limit
+    });
     dispatch(changeFavors(favorData));
   }
 }
@@ -68,7 +78,10 @@ export const updateUserInfo = (data) => {
       nickname
     } = data;
 
-    return await put('cms/user', { email, nickname });
+    return await put('cms/user', {
+      email,
+      nickname
+    });
   }
 }
 
@@ -96,6 +109,8 @@ export const updatePass = (data) => {
 
 export const updateAvatar = (url) => {
   return async (dispatch) => {
-    return await put('/cms/user/avatar', {avatar: url});
+    return await put('/cms/user/avatar', {
+      avatar: url
+    });
   }
 }

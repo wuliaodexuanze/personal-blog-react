@@ -15,8 +15,8 @@ const mapDispatchToProps = (dispatch) => ({
   getBlogTopList() {
     dispatch(actionCreators.getBlogTopList());
   },
-  getBlogList() {
-    dispatch(actionCreators.getBlogList());
+  getBlogList(query = {}) {
+    dispatch(actionCreators.getBlogList(query));
   },
   /**
    * 显示输入框

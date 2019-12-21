@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 import {
   get
 } from '../../../utils/http';
+import config from '../../../config';
 
 
 const changeList = (data) => ({
@@ -12,12 +13,15 @@ const changeList = (data) => ({
 export const getList = (path, query = {}) => {
   const {
     offset = 0,
-    limit = 10,
-    q = ''
+      limit = config.limit,
+      q = ''
   } = query;
   return async (dispatch) => {
-    const data = await get(`/v1/blog${path}`, {offset, limit, q});
+    const data = await get(`/v1/blog${path}`, {
+      offset,
+      limit,
+      q
+    });
     dispatch(changeList(data));
   }
 }
-

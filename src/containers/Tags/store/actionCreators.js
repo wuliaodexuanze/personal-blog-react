@@ -1,5 +1,8 @@
 import * as actionTypes from './actionTypes';
-import { get } from '../../../utils/http';
+import {
+  get
+} from '../../../utils/http';
+import config from '../../../config';
 
 const changeTags = (data) => ({
   type: actionTypes.GET_TAGS,
@@ -17,10 +20,16 @@ export const getTags = () => {
   }
 }
 
-export const getContentList = (id, {offset=0, limit=10}) => {
+export const getContentList = (id, {
+  offset = 0,
+  limit = config.limit
+}) => {
   return async (dispatch) => {
     if (id) {
-      const data = await get(`/v1/tag/${id}/blog`, {offset, limit});
+      const data = await get(`/v1/tag/${id}/blog`, {
+        offset,
+        limit
+      });
       dispatch(changeContentList(data));
     }
   }

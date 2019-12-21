@@ -1,5 +1,9 @@
 import * as actionTypes from './actionTypes';
-import { get, post } from '../../../utils/http';
+import {
+  get,
+  post
+} from '../../../utils/http';
+import config from '../../../config';
 
 
 const changeData = (detail) => ({
@@ -56,10 +60,16 @@ export const getOrsoArticle = (id) => {
  * 获取文章评论
  * @param {*} id 
  */
-export const getComments = (id, {offset=0, limit=10}) => {
+export const getComments = (id, {
+  offset = 0,
+  limit = config.limit
+}) => {
   return async (dispatch) => {
     if (id) {
-      const comments = await get(`/v1/comment/blog/${id}`, {offset, limit});
+      const comments = await get(`/v1/comment/blog/${id}`, {
+        offset,
+        limit
+      });
       dispatch(changeComments(comments));
     }
   }
@@ -72,7 +82,9 @@ export const getComments = (id, {offset=0, limit=10}) => {
 export const like = (id) => {
   return async (dispatch) => {
     if (id) {
-      const like = await post(`/v1/favor`, {id});
+      const like = await post(`/v1/favor`, {
+        id
+      });
       if (like.error_code === 0) {
         dispatch(changeLike(true));
         return like;
@@ -120,12 +132,12 @@ export const getFavorCount = (id) => {
 export const addComment = (blogId, content) => {
   return async () => {
     if (blogId && content) {
-      const comment = await post('/v1/comment', { 
+      const comment = await post('/v1/comment', {
         blog_id: blogId,
         content
-       });
+      });
 
-       return comment;
+      return comment;
     }
   }
 }

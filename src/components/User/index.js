@@ -177,7 +177,7 @@ function User({
   }, [updatePass]);
 
   const changeFavorPage = (page) => {
-    getUserFavors({favorOffset: (Number(page) - 1)*favorLimit, favorLimit});
+    getUserFavors({offset: (Number(page) - 1)*favorLimit, limit: favorLimit});
   }
 
   useLayoutEffect(() => {
